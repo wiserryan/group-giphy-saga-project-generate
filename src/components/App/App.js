@@ -10,7 +10,6 @@ function App () {
     <div>
       <h1>Giphy Search</h1>
       <Search />
-     {/* //<img src={gifUrl} /> */}
     </div>
   );
 
