@@ -17,7 +17,7 @@ function Search() {
   }
 
 
-    // axios.get(`https://api.giphy.com/v1/gifs/search?q=${searchVal}&api_key=${process.env.GIPHY_API_KEY}&limit=1`)
+   
     const handleSearch = () => {
         axios.get(`https://api.giphy.com/v1/gifs/search?q=${searchVal}&api_key=f1Ob6ah9Q8L9izTbR4arrp4EgWvNVGt6&limit=15`)
     .then(response => {
