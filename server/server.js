@@ -1,9 +1,12 @@
+require('dotenv').config()
+console.log(process.env.EXAMPLE);
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
 // App PORT set with production check
 const PORT = process.env.PORT || 5000;
+const axios = require('axios');
 
 // Route includes
 const favoriteRouter = require('./routes/favorite.router');
