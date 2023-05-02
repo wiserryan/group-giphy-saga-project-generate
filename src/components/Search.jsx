@@ -16,7 +16,9 @@ function Search() {
     dispatch(action);
   }
 
-
+  const toFavorites = () => {
+    return history.push('/favorites');
+  }
    
     const handleSearch = () => {
         axios.get(`https://api.giphy.com/v1/gifs/search?q=${searchVal}&api_key=f1Ob6ah9Q8L9izTbR4arrp4EgWvNVGt6&limit=15`)
@@ -38,6 +40,7 @@ function Search() {
     <div>
       <input id="input" name="search" value={searchVal} onChange={handleChange} onClick={handleInputClick} />
       <button onClick={handleSearch}>Search</button>
+      <button onClick={toFavorites}>Favorites</button>
       <div className="image-container">
         {gifUrls.map(url => (
           <img key={url} src={url} alt="gif" width="300px" height="300px" />

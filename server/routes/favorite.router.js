@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
 
 // add a new favorite
 router.post('/', (req, res) => {
+  
   res.sendStatus(200);
 });
 
