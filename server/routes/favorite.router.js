@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
     .query(queryText)
     .then((result) => {
       res.send(result.rows);
-      res.sendStatus(200);
     })
     .catch((error) => {
       console.log(`Error on query ${error}`);
@@ -20,9 +19,19 @@ router.get('/', (req, res) => {
 
 // add a new favorite
 router.post('/', (req, res) => {
-  
-  res.sendStatus(200);
-});
+  const favorite = req.body;
+  const sqlText = `INSERT INTO favorites (url)
+                   VALUES ($1)`;
+  pool.query(sqlText, [favorite])
+      .then((result) => {
+          console.log(`Added favorite to the database`, favorite);
+          res.sendStatus(201);
+      })
+      .catch((error) => {
+          console.log(`Error making database query ${sqlText}`, error);
+          res.sendStatus(500); 
+      })
+})
 
 // update given favorite with a category id
 router.put('/:favId', (req, res) => {

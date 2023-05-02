@@ -20,6 +20,15 @@ function Search() {
     return history.push('/favorites');
   }
    
+  const addFavorite = (e) => {
+    axios.post(`/api/favorite/${e}`).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(`Error in addFavorite, ${error}`)
+      alert('Something went wrong.')
+    });
+  }
+
     const handleSearch = () => {
         axios.get(`https://api.giphy.com/v1/gifs/search?q=${searchVal}&api_key=f1Ob6ah9Q8L9izTbR4arrp4EgWvNVGt6&limit=15`)
     .then(response => {
@@ -43,7 +52,7 @@ function Search() {
       <button onClick={toFavorites}>Favorites</button>
       <div className="image-container">
         {gifUrls.map(url => (
-          <img key={url} src={url} alt="gif" width="300px" height="300px" />
+          <img key={url} src={url} alt="gif" width="300px" height="300px" onClick={(e) => addFavorite(e.target.src)} />
         ))}
       </div>
     </div>
