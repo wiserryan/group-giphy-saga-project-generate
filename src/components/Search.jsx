@@ -21,7 +21,9 @@ function Search() {
   }
    
   const addFavorite = (e) => {
-    axios.post(`/api/favorite/${e}`).then((response) => {
+    console.log(e)
+    axios.post(`/api/favorite/`, {value:e}
+    ).then((response) => {
       console.log(response);
     }).catch((error) => {
       console.log(`Error in addFavorite, ${error}`)
